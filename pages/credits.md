@@ -7,7 +7,7 @@ permalink: credits
 
 This website is powered by [Jekyll](https://jekyllrb.com/) and the [Type on Strap](https://github.com/sylhare/Type-on-Strap) theme.
 
-This website was made with the help of [Jacob Suh](http://jacobysuh.com).
+This website was made with the help of [Steven Stetzler](http://stevenstetzler.com) and [Jacob Suh](http://jacobysuh.com).
 
 **Images**
 - Orion: [NASA/JPL-Caltech/STScI](https://www.nasa.gov/multimedia/imagegallery/image_feature_693.html)
