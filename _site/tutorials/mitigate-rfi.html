@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <!-- JQuery (used for bootstrap and jekyll search) -->
-    <script src="/psr-obs/assets/js/jquery-3.2.1.min.js" ></script>
+    <script src="/assets/js/jquery-3.2.1.min.js" ></script>
     
     <!-- Main JS (navbar.js and katex_init.js)-->
-    <script defer=true src="/psr-obs/assets/js/main.min.js"></script>
+    <script defer=true src="/assets/js/main.min.js"></script>
     
     <!-- CSS -->
-    <link rel="stylesheet" href="/psr-obs/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
 
     <!--Favicon-->
-    <link rel="shortcut icon" href="/psr-obs/assets/img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
 
     <!-- Canonical -->
-    <link rel="canonical" href="http://localhost:4000/psr-obs/tutorials/mitigate-rfi">
+    <link rel="canonical" href="http://localhost:4000/tutorials/mitigate-rfi">
 
     <!-- RSS -->
-    <link rel="alternate" type="application/atom+xml" title="UVa Pulsar Observers" href="http://localhost:4000//psr-obs//feed.xml"/>
+    <link rel="alternate" type="application/atom+xml" title="UVa Pulsar Observers" href="http://localhost:4000///feed.xml"/>
 
     <!-- Font Awesome -->
     <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" type="text/css" href="/psr-obs/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
 
     <!-- Google Fonts -->
     
@@ -35,8 +35,8 @@
     
     <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="/psr-obs/assets/css/katex.min.css">
-    <script src="/psr-obs/assets/js/katex.min.js">
+    <link rel="stylesheet" type="text/css" href="/assets/css/katex.min.css">
+    <script src="/assets/js/katex.min.js">
     </script>
     
 
@@ -50,12 +50,12 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="Accompanying Lecture: Radio Frequency Interference (RFI) Generally in astronomy, your instruments are subject to some type of interference. By interference, we mean signals in your instrument that aren’t noise inherent to your detector, but they aren’t the signals you are looking for as well. For example, in optical astronomy, you may have noticed that you can see fewer stars when it is bright outside, or if there is a lot of light pollution. In this case, your eyes are collecting real photons, but they just aren’t the photons you were hoping to see. In the radio frequencies, interference is incredibly common since we have so many technologies that operate at these frequencies. A common radio frequency to observe at is called L-Band, which includes the frequency 2.4 GHz. Most WiFi routers operate and broadcast signals at 2.4 GHz. Microwaves also operate at this frequency. Cell phone signals and radio stations also broadcast at the frequencies we are interested in. This is why it is important not to have astronomical radio instruments close to civilization in general, which is why you will usually find radio telescopes far from civilization in deserts (like New Mexico or Atacama, Chile) or in specially located radio quiet zones (like Greenbank, West Virinia). Mitigating RFI with PSRCHIVE The psrchive toolset has several tools that can be used to mitigate RFI in pulsar data. Mitigating RFI For us For us, we will use a simple tool to mitigate RFI, which involves zapping exceptionally strong signals in our data (usually flashes of RFI). Kevin has created several scripts to be used with psrchive to perform this zapping. These scripts are contained in the files median_4.psh, median_5.psh, and median_6.psh. Each of these scripts removes data in .ar files that lie 4, 5, and 6 standard deviations from the median value of the signals observed in the .ar file. These can be used with the command psrsh /home/kstovall/bin/median_N.psh &lt;ar_file(s)&gt; where N can be 4, 5, or 6 and &lt;ar_file(s)&gt; can be replaced with single or a list of .ar files to zap. All of the .ar files in your current directory can be zapped using psrsh /home/kstovall/bin/median_N.psh *.ar These operations can take a signficant amount of memory to perform, so ensure that if you are operating on the UCF computers that you are using a currently unused node, so as not to interrupt the work of others." />
 <meta property="og:description" content="Accompanying Lecture: Radio Frequency Interference (RFI) Generally in astronomy, your instruments are subject to some type of interference. By interference, we mean signals in your instrument that aren’t noise inherent to your detector, but they aren’t the signals you are looking for as well. For example, in optical astronomy, you may have noticed that you can see fewer stars when it is bright outside, or if there is a lot of light pollution. In this case, your eyes are collecting real photons, but they just aren’t the photons you were hoping to see. In the radio frequencies, interference is incredibly common since we have so many technologies that operate at these frequencies. A common radio frequency to observe at is called L-Band, which includes the frequency 2.4 GHz. Most WiFi routers operate and broadcast signals at 2.4 GHz. Microwaves also operate at this frequency. Cell phone signals and radio stations also broadcast at the frequencies we are interested in. This is why it is important not to have astronomical radio instruments close to civilization in general, which is why you will usually find radio telescopes far from civilization in deserts (like New Mexico or Atacama, Chile) or in specially located radio quiet zones (like Greenbank, West Virinia). Mitigating RFI with PSRCHIVE The psrchive toolset has several tools that can be used to mitigate RFI in pulsar data. Mitigating RFI For us For us, we will use a simple tool to mitigate RFI, which involves zapping exceptionally strong signals in our data (usually flashes of RFI). Kevin has created several scripts to be used with psrchive to perform this zapping. These scripts are contained in the files median_4.psh, median_5.psh, and median_6.psh. Each of these scripts removes data in .ar files that lie 4, 5, and 6 standard deviations from the median value of the signals observed in the .ar file. These can be used with the command psrsh /home/kstovall/bin/median_N.psh &lt;ar_file(s)&gt; where N can be 4, 5, or 6 and &lt;ar_file(s)&gt; can be replaced with single or a list of .ar files to zap. All of the .ar files in your current directory can be zapped using psrsh /home/kstovall/bin/median_N.psh *.ar These operations can take a signficant amount of memory to perform, so ensure that if you are operating on the UCF computers that you are using a currently unused node, so as not to interrupt the work of others." />
-<link rel="canonical" href="http://localhost:4000/psr-obs/tutorials/mitigate-rfi" />
-<meta property="og:url" content="http://localhost:4000/psr-obs/tutorials/mitigate-rfi" />
+<link rel="canonical" href="http://localhost:4000/tutorials/mitigate-rfi" />
+<meta property="og:url" content="http://localhost:4000/tutorials/mitigate-rfi" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-03-22T00:00:00-07:00" />
+<meta property="article:published_time" content="2018-03-22T00:00:00-04:00" />
 <script type="application/ld+json">
-{"description":"Accompanying Lecture: Radio Frequency Interference (RFI) Generally in astronomy, your instruments are subject to some type of interference. By interference, we mean signals in your instrument that aren’t noise inherent to your detector, but they aren’t the signals you are looking for as well. For example, in optical astronomy, you may have noticed that you can see fewer stars when it is bright outside, or if there is a lot of light pollution. In this case, your eyes are collecting real photons, but they just aren’t the photons you were hoping to see. In the radio frequencies, interference is incredibly common since we have so many technologies that operate at these frequencies. A common radio frequency to observe at is called L-Band, which includes the frequency 2.4 GHz. Most WiFi routers operate and broadcast signals at 2.4 GHz. Microwaves also operate at this frequency. Cell phone signals and radio stations also broadcast at the frequencies we are interested in. This is why it is important not to have astronomical radio instruments close to civilization in general, which is why you will usually find radio telescopes far from civilization in deserts (like New Mexico or Atacama, Chile) or in specially located radio quiet zones (like Greenbank, West Virinia). Mitigating RFI with PSRCHIVE The psrchive toolset has several tools that can be used to mitigate RFI in pulsar data. Mitigating RFI For us For us, we will use a simple tool to mitigate RFI, which involves zapping exceptionally strong signals in our data (usually flashes of RFI). Kevin has created several scripts to be used with psrchive to perform this zapping. These scripts are contained in the files median_4.psh, median_5.psh, and median_6.psh. Each of these scripts removes data in .ar files that lie 4, 5, and 6 standard deviations from the median value of the signals observed in the .ar file. These can be used with the command psrsh /home/kstovall/bin/median_N.psh &lt;ar_file(s)&gt; where N can be 4, 5, or 6 and &lt;ar_file(s)&gt; can be replaced with single or a list of .ar files to zap. All of the .ar files in your current directory can be zapped using psrsh /home/kstovall/bin/median_N.psh *.ar These operations can take a signficant amount of memory to perform, so ensure that if you are operating on the UCF computers that you are using a currently unused node, so as not to interrupt the work of others.","@type":"BlogPosting","url":"http://localhost:4000/psr-obs/tutorials/mitigate-rfi","headline":"Mitigating RFI","dateModified":"2018-03-22T00:00:00-07:00","datePublished":"2018-03-22T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/psr-obs/tutorials/mitigate-rfi"},"@context":"http://schema.org"}</script>
+{"description":"Accompanying Lecture: Radio Frequency Interference (RFI) Generally in astronomy, your instruments are subject to some type of interference. By interference, we mean signals in your instrument that aren’t noise inherent to your detector, but they aren’t the signals you are looking for as well. For example, in optical astronomy, you may have noticed that you can see fewer stars when it is bright outside, or if there is a lot of light pollution. In this case, your eyes are collecting real photons, but they just aren’t the photons you were hoping to see. In the radio frequencies, interference is incredibly common since we have so many technologies that operate at these frequencies. A common radio frequency to observe at is called L-Band, which includes the frequency 2.4 GHz. Most WiFi routers operate and broadcast signals at 2.4 GHz. Microwaves also operate at this frequency. Cell phone signals and radio stations also broadcast at the frequencies we are interested in. This is why it is important not to have astronomical radio instruments close to civilization in general, which is why you will usually find radio telescopes far from civilization in deserts (like New Mexico or Atacama, Chile) or in specially located radio quiet zones (like Greenbank, West Virinia). Mitigating RFI with PSRCHIVE The psrchive toolset has several tools that can be used to mitigate RFI in pulsar data. Mitigating RFI For us For us, we will use a simple tool to mitigate RFI, which involves zapping exceptionally strong signals in our data (usually flashes of RFI). Kevin has created several scripts to be used with psrchive to perform this zapping. These scripts are contained in the files median_4.psh, median_5.psh, and median_6.psh. Each of these scripts removes data in .ar files that lie 4, 5, and 6 standard deviations from the median value of the signals observed in the .ar file. These can be used with the command psrsh /home/kstovall/bin/median_N.psh &lt;ar_file(s)&gt; where N can be 4, 5, or 6 and &lt;ar_file(s)&gt; can be replaced with single or a list of .ar files to zap. All of the .ar files in your current directory can be zapped using psrsh /home/kstovall/bin/median_N.psh *.ar These operations can take a signficant amount of memory to perform, so ensure that if you are operating on the UCF computers that you are using a currently unused node, so as not to interrupt the work of others.","@type":"BlogPosting","url":"http://localhost:4000/tutorials/mitigate-rfi","headline":"Mitigating RFI","dateModified":"2018-03-22T00:00:00-04:00","datePublished":"2018-03-22T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tutorials/mitigate-rfi"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,12 +72,12 @@
     
     <!-- Logo and title -->
     <div class="branding">
-        <a href="/psr-obs/">
-            <img class="avatar" src="/psr-obs/assets/img/logo.svg" alt=""/>
+        <a href="/">
+            <img class="avatar" src="/assets/img/logo.svg" alt=""/>
         </a>
 
         <h1 class="site-title">
-            <a href="/psr-obs/">UVa Pulsar Observers</a>
+            <a href="/">UVa Pulsar Observers</a>
         </h1>
     </div>
     
@@ -106,11 +106,11 @@
 
                             <div class="dropdown-content">
                             
-                                    <a href="/psr-obs/timing">Timing Group</a>
+                                    <a href="/timing">Timing Group</a>
                             
-                                    <a href="/psr-obs/lectures">Lectures</a>
+                                    <a href="/lectures">Lectures</a>
                             
-                                    <a href="/psr-obs/tutorials">Tutorials</a>
+                                    <a href="/tutorials">Tutorials</a>
                             
                             </div>
                     </div>
@@ -119,19 +119,19 @@
         
                 
                         <li>
-                                <a href="/psr-obs/pulsar">Pulsars</a>
+                                <a href="/pulsar">Pulsars</a>
                         </li>
                 
         
                 
                         <li>
-                                <a href="/psr-obs/LWA">LWA</a>
+                                <a href="/LWA">LWA</a>
                         </li>
                 
         
                 
                         <li>
-                                <a href="/psr-obs/about">About</a>
+                                <a href="/about">About</a>
                         </li>
                 
         
@@ -159,7 +159,7 @@
 
     
         <li>
-            <a class="clear" href="/psr-obs/">
+            <a class="clear" href="/">
                 Welcome
             </a>
         </li>
@@ -205,7 +205,7 @@
 
     
         <li>
-            <a class="clear" href="/psr-obs/timing.html">
+            <a class="clear" href="/timing.html">
                 UVa Timing
             </a>
         </li>
@@ -226,7 +226,7 @@
 
     
         <li>
-            <a class="clear" href="/psr-obs/pulsar">
+            <a class="clear" href="/pulsar">
                 Pulsars
             </a>
         </li>
@@ -244,7 +244,7 @@
 
     
         <li>
-            <a class="clear" href="/psr-obs/LWA">
+            <a class="clear" href="/LWA">
                 LWA
             </a>
         </li>
@@ -262,7 +262,7 @@
 
     
         <li>
-            <a class="clear" href="/psr-obs/about">
+            <a class="clear" href="/about">
                 About
             </a>
         </li>
@@ -298,7 +298,7 @@
 
     <div class="content">
       <article >
-  <header id="main" style="background-image: url('/psr-obs/')">
+  <header id="main" style="background-image: url('/')">
     <h1 id="Mitigating+RFI" class="title">
         Mitigating RFI
     </h1>
@@ -341,7 +341,7 @@
     
 <footer class="site-footer">
     <p class="text">&copy; Steven Stetzler
- | <a href="/psr-obs/credits">Credits</a></p>
+ | <a href="/credits">Credits</a></p>
             <div class="footer-icons">
                 <ul>
                 <!-- Social icons from Font Awesome, if enabled -->
@@ -349,7 +349,7 @@
 
 
 <li>
-<a href="mailto:steven.stetzler@gmail.com" title="Email">
+<a href="mailto:pulsarobservers@gmail.com" title="Email">
         <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
@@ -370,7 +370,7 @@
 
 
 <li>
-	<a href="https://github.com/stevenstetzler" title="Follow on GitHub">
+	<a href="https://github.com/pulsar-observers" title="Follow on GitHub">
 		<span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-github fa-stack-1x fa-inverse"></i>

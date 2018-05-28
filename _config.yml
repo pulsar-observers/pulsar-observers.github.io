@@ -1,6 +1,6 @@
 # SITE CONFIGURATION
-baseurl: "/psr-obs"
-url: "https://stevenstetzler.com"
+baseurl: ""
+url: "https://pulsar-observers.github.io"
 destination: "_site"
 
 # THEME-SPECIFIC CONFIGURATION
@@ -21,14 +21,14 @@ theme_settings:
 
   # Icons
   rss: false
-  email_address: steven.stetzler@gmail.com # Full email address, e.g. "sam@example.com"
+  email_address: pulsarobservers@gmail.com # Full email address, e.g. "sam@example.com"
   behance:
   bitbucket:
   dribbble:
   facebook:
   flickr:
   gitlab:
-  github: "stevenstetzler"
+  github: "pulsar-observers"
   google_plus:
   instagram:
   keybase:

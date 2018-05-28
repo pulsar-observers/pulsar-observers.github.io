@@ -5,26 +5,26 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     
     <!-- JQuery (used for bootstrap and jekyll search) -->
-    <script src="/psr-obs/assets/js/jquery-3.2.1.min.js" ></script>
+    <script src="/assets/js/jquery-3.2.1.min.js" ></script>
     
     <!-- Main JS (navbar.js and katex_init.js)-->
-    <script defer=true src="/psr-obs/assets/js/main.min.js"></script>
+    <script defer=true src="/assets/js/main.min.js"></script>
     
     <!-- CSS -->
-    <link rel="stylesheet" href="/psr-obs/assets/css/main.css">
+    <link rel="stylesheet" href="/assets/css/main.css">
 
     <!--Favicon-->
-    <link rel="shortcut icon" href="/psr-obs/assets/img/logo.png" type="image/x-icon">
+    <link rel="shortcut icon" href="/assets/img/logo.png" type="image/x-icon">
 
     <!-- Canonical -->
-    <link rel="canonical" href="http://localhost:4000/psr-obs/tutorials/toas">
+    <link rel="canonical" href="http://localhost:4000/tutorials/toas">
 
     <!-- RSS -->
-    <link rel="alternate" type="application/atom+xml" title="UVa Pulsar Observers" href="http://localhost:4000//psr-obs//feed.xml"/>
+    <link rel="alternate" type="application/atom+xml" title="UVa Pulsar Observers" href="http://localhost:4000///feed.xml"/>
 
     <!-- Font Awesome -->
     <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
-    <link rel="stylesheet" type="text/css" href="/psr-obs/assets/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="/assets/css/font-awesome.min.css">
 
     <!-- Google Fonts -->
     
@@ -35,8 +35,8 @@
     
     <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
     <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js"></script> -->
-    <link rel="stylesheet" type="text/css" href="/psr-obs/assets/css/katex.min.css">
-    <script src="/psr-obs/assets/js/katex.min.js">
+    <link rel="stylesheet" type="text/css" href="/assets/css/katex.min.css">
+    <script src="/assets/js/katex.min.js">
     </script>
     
 
@@ -50,12 +50,12 @@
 <meta property="og:locale" content="en_US" />
 <meta name="description" content="A time of arrival (TOA) is the key component of a pulsar’s timing solution; it is the raw data point to which the timing solution model is fit. A time of arrival can be thought of as a “timestamp” indicating when the radiation from a pulsar arrived at the telescope with which we are observing. The time of arrival is not the true arrival time of any single pulse of a radiation from a pulsar, but rather it is a “timestamp” associated with the averaged data from a single observation at a single frequency. Even though we may observe a pulsar for tens or minutes or even 1 - 2 hours and at a wide range of frequencies, we average all of this data together in order to produce just a few TOAs for a single observation. For example, we may observe a pulsar for 1 hour over frequencies ranging from 33 MHz to 78 Mhz, but only produce 2 TOAs from this observation: 1 TOA for the first 30 minutes of the observation and 1 TOA for the second 30 minutes of the observation, both with an associated frequency which is the central frequency of our observation band (55.5 MHz). Of course, we can divy up our observation into smaller chuncks in time, producing more TOAs at different times for a single observation. We can also divy up our frequency band in a finer-grained manner, producing TOAs at several different frequencies for a single observation instead of just 1 characteristic frequency. Scrunching Data with pam The process of averaging together data in time and frequency is known in our jargon as “scrunching” the data. We can scrunch in both the time domain and the frequency domain. Raw pulsar observation data stored in the standard psrchive INSERT LINK format (.ar files) can be scrunched using the pam command INSERT LINK from psrchive. pam is a general purpose tool for modifying .ar files. In our use, we will use it to simply scrunch data in the time and frequency domains using the following commands: pam -e &lt;ext&gt; --nsubint=&lt;num_sub_integrations&gt; &lt;ar_file&gt; and pam -e &lt;ext&gt; --nsubchn=&lt;num_frequency_channels&gt; &lt;ar_file&gt; When writing code, whenever we surround a word with brackets (&lt;&gt;), we mean that you have to replace what’s inside the brackets with the object described in the brackets. For example, here we would replace &lt;ar_file&gt; with my_pulsar_data.ar, which is just a standard .ar file. &lt;num_sub_integrations&gt; is replaced with the desired number of sub integrations that you want your data to be segmented into. For example, if our observation is an hour long and we use 2 for the number of sub integrations, at the end of the scrunch, our data will be averaged into two 30 minute sections. Similarly, using 4 would average the data into four 15 minute sections. &lt;num_frequency_channels&gt; is replaced with the number of frequency channels to segment the data into. Usually, our data from the telescope, once processed, is very finely grained, containing information about the pulsar at several hundred or several thousands of frequencies in our observing band. We can average this data together in the frequency domain, so that we have averaged data that is associated with only &lt;num_frequency_channels&gt; number of channels. For example, averaging down to 2 frequency channels on data that covers the frequency range of 20 MHz - 100 MHz would produce data that is associated with frequencies of 40 MHz and 80 MHz (these two frequencies are the center frequencies between 20 MHz - 60 MHz and 60 MHz - 100 MHz, where 60 MHz is the halfway point between 20 and 100). Finally, &lt;ext&gt; provides an extension to use to append to the data files when writing them back out into files. Usually, we want to differentiate the scrunched files from the raw .ar files, so we use the conventiion of putting how many sub integrations and how many frequency channels are in the scrunched data in the extension. For example, if we scrunched our data down to 2 sub integrations and 2 frequency channels we might use &lt;ext&gt; = 2sub2chan to indicate to us and others the properties of the scrunched data. But you can use whatever makes sense to you. pam has the ability to operate on many .ar files at once, and you can provide it with all of the .ar files in your current directory using pam -e &lt;ext&gt; --nsubint=&lt;num_sub_integrations&gt; --nsubchn=&lt;num_frequency_channels&gt; *.ar What scrunched data looks like The purpose of scrunching data is to average together low signal-to-noise ratio (SNR) pulse profiles together to produce one high SNR pulse profile. We can see this effect by using psrplot to examine the .ar files before the scrunching and after the scrunching. For convenience, we will use the summary_plot command to plot the .ar data. First, we will examine some data from the pulsar INSERT PULSAR. The raw ar files used can be found here: INSERT LINK summary_plot &lt;ar_file&gt;.ar INSERT PICTURES HERE Next, we will scrunch the data using pam: pam -e 2sub2chan --nsubint=2 --numchn=2 &lt;ar_file&gt;.ar Finally, we will observe this scrunched data using summary_plot &lt;file&gt;.2sub2chan Making TOAs Making a TOA involves matching a template (what we think the pulse profile looks like) to our pulse profile, which we saw in the section above. Template matching is a process by which a template is swept through a set of data (usually a time series) and the location where the template best matches the data is found. By sweeping a template over the pulse profile and then finding the point in time where the template best matches the data, we are making a high precision measurement of the time of arrival of the averaged pulsar signal for our observation. This template matching can be performed using the command pat INSERT LINK from the psrchive software. pat is used as follows pat -f princeton -F -s &lt;template_location&gt; &gt; &lt;outfilename&gt; The -f princeton tells pat to print out the TOAs using the princeton format. There are several formats available, but the princeton format is the simplest and most straightforward to use. The -F tells pat to also average the data in polarization as well. The -s &lt;template_location&gt; tells pat to look for a template at the location &lt;template_location&gt;. Finally the &gt; &lt;outfilename&gt; tells Bash to pipe the output of pat (the TOAs) into a file called &lt;outfilename&gt;. For example, using the scrunched data from above we can use the command pat -f princeton -F -s PULSAR_TEMPLATE &gt; PULSAR_NAME.tim to construct TOAs for this pulsar at the times and frequencies associated with the scrunched data. If we inspect the file PULSAR_NAME.tim, we will see that it’s just a bunch of text: TEXT Describe the output from the TOAs Evaluating TOAs How do you know if your TOAs are any good? Are you sure that the pulsar signal is actually in your date? To check this, we want to consider two things: the template matching procedure ensures that the uncertainty on a TOA should be ~1000 times less than the pulse period of the pulsar. For example, if you have a slow pulsar with a spin period of ~ 1 s, you would expect that the typical TOA will have an uncertainty associated with it of ~ 1 ms. This is why millisecond pulsars (fast pulsars) are valuable tools, because the process of TOA creation creates extremely precise TOAs; with a spin period of ~ 1 ms, a millisecond pulsar will have typical TOAs with uncertainties of ~ 1 . This is what pulsar astronomers usually mean when they mean that millisecond pulsars are good timers (they are also usually talking about the stability of the pulsar as well). Another check for whether TOAs are good or not is to check whether they are consistent with a previous timing solution for the pulsar. This gets a bit tricky if the timing solution for the pulsar has not been developed yet. Timing is discussed in another post here." />
 <meta property="og:description" content="A time of arrival (TOA) is the key component of a pulsar’s timing solution; it is the raw data point to which the timing solution model is fit. A time of arrival can be thought of as a “timestamp” indicating when the radiation from a pulsar arrived at the telescope with which we are observing. The time of arrival is not the true arrival time of any single pulse of a radiation from a pulsar, but rather it is a “timestamp” associated with the averaged data from a single observation at a single frequency. Even though we may observe a pulsar for tens or minutes or even 1 - 2 hours and at a wide range of frequencies, we average all of this data together in order to produce just a few TOAs for a single observation. For example, we may observe a pulsar for 1 hour over frequencies ranging from 33 MHz to 78 Mhz, but only produce 2 TOAs from this observation: 1 TOA for the first 30 minutes of the observation and 1 TOA for the second 30 minutes of the observation, both with an associated frequency which is the central frequency of our observation band (55.5 MHz). Of course, we can divy up our observation into smaller chuncks in time, producing more TOAs at different times for a single observation. We can also divy up our frequency band in a finer-grained manner, producing TOAs at several different frequencies for a single observation instead of just 1 characteristic frequency. Scrunching Data with pam The process of averaging together data in time and frequency is known in our jargon as “scrunching” the data. We can scrunch in both the time domain and the frequency domain. Raw pulsar observation data stored in the standard psrchive INSERT LINK format (.ar files) can be scrunched using the pam command INSERT LINK from psrchive. pam is a general purpose tool for modifying .ar files. In our use, we will use it to simply scrunch data in the time and frequency domains using the following commands: pam -e &lt;ext&gt; --nsubint=&lt;num_sub_integrations&gt; &lt;ar_file&gt; and pam -e &lt;ext&gt; --nsubchn=&lt;num_frequency_channels&gt; &lt;ar_file&gt; When writing code, whenever we surround a word with brackets (&lt;&gt;), we mean that you have to replace what’s inside the brackets with the object described in the brackets. For example, here we would replace &lt;ar_file&gt; with my_pulsar_data.ar, which is just a standard .ar file. &lt;num_sub_integrations&gt; is replaced with the desired number of sub integrations that you want your data to be segmented into. For example, if our observation is an hour long and we use 2 for the number of sub integrations, at the end of the scrunch, our data will be averaged into two 30 minute sections. Similarly, using 4 would average the data into four 15 minute sections. &lt;num_frequency_channels&gt; is replaced with the number of frequency channels to segment the data into. Usually, our data from the telescope, once processed, is very finely grained, containing information about the pulsar at several hundred or several thousands of frequencies in our observing band. We can average this data together in the frequency domain, so that we have averaged data that is associated with only &lt;num_frequency_channels&gt; number of channels. For example, averaging down to 2 frequency channels on data that covers the frequency range of 20 MHz - 100 MHz would produce data that is associated with frequencies of 40 MHz and 80 MHz (these two frequencies are the center frequencies between 20 MHz - 60 MHz and 60 MHz - 100 MHz, where 60 MHz is the halfway point between 20 and 100). Finally, &lt;ext&gt; provides an extension to use to append to the data files when writing them back out into files. Usually, we want to differentiate the scrunched files from the raw .ar files, so we use the conventiion of putting how many sub integrations and how many frequency channels are in the scrunched data in the extension. For example, if we scrunched our data down to 2 sub integrations and 2 frequency channels we might use &lt;ext&gt; = 2sub2chan to indicate to us and others the properties of the scrunched data. But you can use whatever makes sense to you. pam has the ability to operate on many .ar files at once, and you can provide it with all of the .ar files in your current directory using pam -e &lt;ext&gt; --nsubint=&lt;num_sub_integrations&gt; --nsubchn=&lt;num_frequency_channels&gt; *.ar What scrunched data looks like The purpose of scrunching data is to average together low signal-to-noise ratio (SNR) pulse profiles together to produce one high SNR pulse profile. We can see this effect by using psrplot to examine the .ar files before the scrunching and after the scrunching. For convenience, we will use the summary_plot command to plot the .ar data. First, we will examine some data from the pulsar INSERT PULSAR. The raw ar files used can be found here: INSERT LINK summary_plot &lt;ar_file&gt;.ar INSERT PICTURES HERE Next, we will scrunch the data using pam: pam -e 2sub2chan --nsubint=2 --numchn=2 &lt;ar_file&gt;.ar Finally, we will observe this scrunched data using summary_plot &lt;file&gt;.2sub2chan Making TOAs Making a TOA involves matching a template (what we think the pulse profile looks like) to our pulse profile, which we saw in the section above. Template matching is a process by which a template is swept through a set of data (usually a time series) and the location where the template best matches the data is found. By sweeping a template over the pulse profile and then finding the point in time where the template best matches the data, we are making a high precision measurement of the time of arrival of the averaged pulsar signal for our observation. This template matching can be performed using the command pat INSERT LINK from the psrchive software. pat is used as follows pat -f princeton -F -s &lt;template_location&gt; &gt; &lt;outfilename&gt; The -f princeton tells pat to print out the TOAs using the princeton format. There are several formats available, but the princeton format is the simplest and most straightforward to use. The -F tells pat to also average the data in polarization as well. The -s &lt;template_location&gt; tells pat to look for a template at the location &lt;template_location&gt;. Finally the &gt; &lt;outfilename&gt; tells Bash to pipe the output of pat (the TOAs) into a file called &lt;outfilename&gt;. For example, using the scrunched data from above we can use the command pat -f princeton -F -s PULSAR_TEMPLATE &gt; PULSAR_NAME.tim to construct TOAs for this pulsar at the times and frequencies associated with the scrunched data. If we inspect the file PULSAR_NAME.tim, we will see that it’s just a bunch of text: TEXT Describe the output from the TOAs Evaluating TOAs How do you know if your TOAs are any good? Are you sure that the pulsar signal is actually in your date? To check this, we want to consider two things: the template matching procedure ensures that the uncertainty on a TOA should be ~1000 times less than the pulse period of the pulsar. For example, if you have a slow pulsar with a spin period of ~ 1 s, you would expect that the typical TOA will have an uncertainty associated with it of ~ 1 ms. This is why millisecond pulsars (fast pulsars) are valuable tools, because the process of TOA creation creates extremely precise TOAs; with a spin period of ~ 1 ms, a millisecond pulsar will have typical TOAs with uncertainties of ~ 1 . This is what pulsar astronomers usually mean when they mean that millisecond pulsars are good timers (they are also usually talking about the stability of the pulsar as well). Another check for whether TOAs are good or not is to check whether they are consistent with a previous timing solution for the pulsar. This gets a bit tricky if the timing solution for the pulsar has not been developed yet. Timing is discussed in another post here." />
-<link rel="canonical" href="http://localhost:4000/psr-obs/tutorials/toas" />
-<meta property="og:url" content="http://localhost:4000/psr-obs/tutorials/toas" />
+<link rel="canonical" href="http://localhost:4000/tutorials/toas" />
+<meta property="og:url" content="http://localhost:4000/tutorials/toas" />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2018-03-22T00:00:00-07:00" />
+<meta property="article:published_time" content="2018-03-22T00:00:00-04:00" />
 <script type="application/ld+json">
-{"description":"A time of arrival (TOA) is the key component of a pulsar’s timing solution; it is the raw data point to which the timing solution model is fit. A time of arrival can be thought of as a “timestamp” indicating when the radiation from a pulsar arrived at the telescope with which we are observing. The time of arrival is not the true arrival time of any single pulse of a radiation from a pulsar, but rather it is a “timestamp” associated with the averaged data from a single observation at a single frequency. Even though we may observe a pulsar for tens or minutes or even 1 - 2 hours and at a wide range of frequencies, we average all of this data together in order to produce just a few TOAs for a single observation. For example, we may observe a pulsar for 1 hour over frequencies ranging from 33 MHz to 78 Mhz, but only produce 2 TOAs from this observation: 1 TOA for the first 30 minutes of the observation and 1 TOA for the second 30 minutes of the observation, both with an associated frequency which is the central frequency of our observation band (55.5 MHz). Of course, we can divy up our observation into smaller chuncks in time, producing more TOAs at different times for a single observation. We can also divy up our frequency band in a finer-grained manner, producing TOAs at several different frequencies for a single observation instead of just 1 characteristic frequency. Scrunching Data with pam The process of averaging together data in time and frequency is known in our jargon as “scrunching” the data. We can scrunch in both the time domain and the frequency domain. Raw pulsar observation data stored in the standard psrchive INSERT LINK format (.ar files) can be scrunched using the pam command INSERT LINK from psrchive. pam is a general purpose tool for modifying .ar files. In our use, we will use it to simply scrunch data in the time and frequency domains using the following commands: pam -e &lt;ext&gt; --nsubint=&lt;num_sub_integrations&gt; &lt;ar_file&gt; and pam -e &lt;ext&gt; --nsubchn=&lt;num_frequency_channels&gt; &lt;ar_file&gt; When writing code, whenever we surround a word with brackets (&lt;&gt;), we mean that you have to replace what’s inside the brackets with the object described in the brackets. For example, here we would replace &lt;ar_file&gt; with my_pulsar_data.ar, which is just a standard .ar file. &lt;num_sub_integrations&gt; is replaced with the desired number of sub integrations that you want your data to be segmented into. For example, if our observation is an hour long and we use 2 for the number of sub integrations, at the end of the scrunch, our data will be averaged into two 30 minute sections. Similarly, using 4 would average the data into four 15 minute sections. &lt;num_frequency_channels&gt; is replaced with the number of frequency channels to segment the data into. Usually, our data from the telescope, once processed, is very finely grained, containing information about the pulsar at several hundred or several thousands of frequencies in our observing band. We can average this data together in the frequency domain, so that we have averaged data that is associated with only &lt;num_frequency_channels&gt; number of channels. For example, averaging down to 2 frequency channels on data that covers the frequency range of 20 MHz - 100 MHz would produce data that is associated with frequencies of 40 MHz and 80 MHz (these two frequencies are the center frequencies between 20 MHz - 60 MHz and 60 MHz - 100 MHz, where 60 MHz is the halfway point between 20 and 100). Finally, &lt;ext&gt; provides an extension to use to append to the data files when writing them back out into files. Usually, we want to differentiate the scrunched files from the raw .ar files, so we use the conventiion of putting how many sub integrations and how many frequency channels are in the scrunched data in the extension. For example, if we scrunched our data down to 2 sub integrations and 2 frequency channels we might use &lt;ext&gt; = 2sub2chan to indicate to us and others the properties of the scrunched data. But you can use whatever makes sense to you. pam has the ability to operate on many .ar files at once, and you can provide it with all of the .ar files in your current directory using pam -e &lt;ext&gt; --nsubint=&lt;num_sub_integrations&gt; --nsubchn=&lt;num_frequency_channels&gt; *.ar What scrunched data looks like The purpose of scrunching data is to average together low signal-to-noise ratio (SNR) pulse profiles together to produce one high SNR pulse profile. We can see this effect by using psrplot to examine the .ar files before the scrunching and after the scrunching. For convenience, we will use the summary_plot command to plot the .ar data. First, we will examine some data from the pulsar INSERT PULSAR. The raw ar files used can be found here: INSERT LINK summary_plot &lt;ar_file&gt;.ar INSERT PICTURES HERE Next, we will scrunch the data using pam: pam -e 2sub2chan --nsubint=2 --numchn=2 &lt;ar_file&gt;.ar Finally, we will observe this scrunched data using summary_plot &lt;file&gt;.2sub2chan Making TOAs Making a TOA involves matching a template (what we think the pulse profile looks like) to our pulse profile, which we saw in the section above. Template matching is a process by which a template is swept through a set of data (usually a time series) and the location where the template best matches the data is found. By sweeping a template over the pulse profile and then finding the point in time where the template best matches the data, we are making a high precision measurement of the time of arrival of the averaged pulsar signal for our observation. This template matching can be performed using the command pat INSERT LINK from the psrchive software. pat is used as follows pat -f princeton -F -s &lt;template_location&gt; &gt; &lt;outfilename&gt; The -f princeton tells pat to print out the TOAs using the princeton format. There are several formats available, but the princeton format is the simplest and most straightforward to use. The -F tells pat to also average the data in polarization as well. The -s &lt;template_location&gt; tells pat to look for a template at the location &lt;template_location&gt;. Finally the &gt; &lt;outfilename&gt; tells Bash to pipe the output of pat (the TOAs) into a file called &lt;outfilename&gt;. For example, using the scrunched data from above we can use the command pat -f princeton -F -s PULSAR_TEMPLATE &gt; PULSAR_NAME.tim to construct TOAs for this pulsar at the times and frequencies associated with the scrunched data. If we inspect the file PULSAR_NAME.tim, we will see that it’s just a bunch of text: TEXT Describe the output from the TOAs Evaluating TOAs How do you know if your TOAs are any good? Are you sure that the pulsar signal is actually in your date? To check this, we want to consider two things: the template matching procedure ensures that the uncertainty on a TOA should be ~1000 times less than the pulse period of the pulsar. For example, if you have a slow pulsar with a spin period of ~ 1 s, you would expect that the typical TOA will have an uncertainty associated with it of ~ 1 ms. This is why millisecond pulsars (fast pulsars) are valuable tools, because the process of TOA creation creates extremely precise TOAs; with a spin period of ~ 1 ms, a millisecond pulsar will have typical TOAs with uncertainties of ~ 1 . This is what pulsar astronomers usually mean when they mean that millisecond pulsars are good timers (they are also usually talking about the stability of the pulsar as well). Another check for whether TOAs are good or not is to check whether they are consistent with a previous timing solution for the pulsar. This gets a bit tricky if the timing solution for the pulsar has not been developed yet. Timing is discussed in another post here.","@type":"BlogPosting","url":"http://localhost:4000/psr-obs/tutorials/toas","headline":"Making TOAs","dateModified":"2018-03-22T00:00:00-07:00","datePublished":"2018-03-22T00:00:00-07:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/psr-obs/tutorials/toas"},"@context":"http://schema.org"}</script>
+{"description":"A time of arrival (TOA) is the key component of a pulsar’s timing solution; it is the raw data point to which the timing solution model is fit. A time of arrival can be thought of as a “timestamp” indicating when the radiation from a pulsar arrived at the telescope with which we are observing. The time of arrival is not the true arrival time of any single pulse of a radiation from a pulsar, but rather it is a “timestamp” associated with the averaged data from a single observation at a single frequency. Even though we may observe a pulsar for tens or minutes or even 1 - 2 hours and at a wide range of frequencies, we average all of this data together in order to produce just a few TOAs for a single observation. For example, we may observe a pulsar for 1 hour over frequencies ranging from 33 MHz to 78 Mhz, but only produce 2 TOAs from this observation: 1 TOA for the first 30 minutes of the observation and 1 TOA for the second 30 minutes of the observation, both with an associated frequency which is the central frequency of our observation band (55.5 MHz). Of course, we can divy up our observation into smaller chuncks in time, producing more TOAs at different times for a single observation. We can also divy up our frequency band in a finer-grained manner, producing TOAs at several different frequencies for a single observation instead of just 1 characteristic frequency. Scrunching Data with pam The process of averaging together data in time and frequency is known in our jargon as “scrunching” the data. We can scrunch in both the time domain and the frequency domain. Raw pulsar observation data stored in the standard psrchive INSERT LINK format (.ar files) can be scrunched using the pam command INSERT LINK from psrchive. pam is a general purpose tool for modifying .ar files. In our use, we will use it to simply scrunch data in the time and frequency domains using the following commands: pam -e &lt;ext&gt; --nsubint=&lt;num_sub_integrations&gt; &lt;ar_file&gt; and pam -e &lt;ext&gt; --nsubchn=&lt;num_frequency_channels&gt; &lt;ar_file&gt; When writing code, whenever we surround a word with brackets (&lt;&gt;), we mean that you have to replace what’s inside the brackets with the object described in the brackets. For example, here we would replace &lt;ar_file&gt; with my_pulsar_data.ar, which is just a standard .ar file. &lt;num_sub_integrations&gt; is replaced with the desired number of sub integrations that you want your data to be segmented into. For example, if our observation is an hour long and we use 2 for the number of sub integrations, at the end of the scrunch, our data will be averaged into two 30 minute sections. Similarly, using 4 would average the data into four 15 minute sections. &lt;num_frequency_channels&gt; is replaced with the number of frequency channels to segment the data into. Usually, our data from the telescope, once processed, is very finely grained, containing information about the pulsar at several hundred or several thousands of frequencies in our observing band. We can average this data together in the frequency domain, so that we have averaged data that is associated with only &lt;num_frequency_channels&gt; number of channels. For example, averaging down to 2 frequency channels on data that covers the frequency range of 20 MHz - 100 MHz would produce data that is associated with frequencies of 40 MHz and 80 MHz (these two frequencies are the center frequencies between 20 MHz - 60 MHz and 60 MHz - 100 MHz, where 60 MHz is the halfway point between 20 and 100). Finally, &lt;ext&gt; provides an extension to use to append to the data files when writing them back out into files. Usually, we want to differentiate the scrunched files from the raw .ar files, so we use the conventiion of putting how many sub integrations and how many frequency channels are in the scrunched data in the extension. For example, if we scrunched our data down to 2 sub integrations and 2 frequency channels we might use &lt;ext&gt; = 2sub2chan to indicate to us and others the properties of the scrunched data. But you can use whatever makes sense to you. pam has the ability to operate on many .ar files at once, and you can provide it with all of the .ar files in your current directory using pam -e &lt;ext&gt; --nsubint=&lt;num_sub_integrations&gt; --nsubchn=&lt;num_frequency_channels&gt; *.ar What scrunched data looks like The purpose of scrunching data is to average together low signal-to-noise ratio (SNR) pulse profiles together to produce one high SNR pulse profile. We can see this effect by using psrplot to examine the .ar files before the scrunching and after the scrunching. For convenience, we will use the summary_plot command to plot the .ar data. First, we will examine some data from the pulsar INSERT PULSAR. The raw ar files used can be found here: INSERT LINK summary_plot &lt;ar_file&gt;.ar INSERT PICTURES HERE Next, we will scrunch the data using pam: pam -e 2sub2chan --nsubint=2 --numchn=2 &lt;ar_file&gt;.ar Finally, we will observe this scrunched data using summary_plot &lt;file&gt;.2sub2chan Making TOAs Making a TOA involves matching a template (what we think the pulse profile looks like) to our pulse profile, which we saw in the section above. Template matching is a process by which a template is swept through a set of data (usually a time series) and the location where the template best matches the data is found. By sweeping a template over the pulse profile and then finding the point in time where the template best matches the data, we are making a high precision measurement of the time of arrival of the averaged pulsar signal for our observation. This template matching can be performed using the command pat INSERT LINK from the psrchive software. pat is used as follows pat -f princeton -F -s &lt;template_location&gt; &gt; &lt;outfilename&gt; The -f princeton tells pat to print out the TOAs using the princeton format. There are several formats available, but the princeton format is the simplest and most straightforward to use. The -F tells pat to also average the data in polarization as well. The -s &lt;template_location&gt; tells pat to look for a template at the location &lt;template_location&gt;. Finally the &gt; &lt;outfilename&gt; tells Bash to pipe the output of pat (the TOAs) into a file called &lt;outfilename&gt;. For example, using the scrunched data from above we can use the command pat -f princeton -F -s PULSAR_TEMPLATE &gt; PULSAR_NAME.tim to construct TOAs for this pulsar at the times and frequencies associated with the scrunched data. If we inspect the file PULSAR_NAME.tim, we will see that it’s just a bunch of text: TEXT Describe the output from the TOAs Evaluating TOAs How do you know if your TOAs are any good? Are you sure that the pulsar signal is actually in your date? To check this, we want to consider two things: the template matching procedure ensures that the uncertainty on a TOA should be ~1000 times less than the pulse period of the pulsar. For example, if you have a slow pulsar with a spin period of ~ 1 s, you would expect that the typical TOA will have an uncertainty associated with it of ~ 1 ms. This is why millisecond pulsars (fast pulsars) are valuable tools, because the process of TOA creation creates extremely precise TOAs; with a spin period of ~ 1 ms, a millisecond pulsar will have typical TOAs with uncertainties of ~ 1 . This is what pulsar astronomers usually mean when they mean that millisecond pulsars are good timers (they are also usually talking about the stability of the pulsar as well). Another check for whether TOAs are good or not is to check whether they are consistent with a previous timing solution for the pulsar. This gets a bit tricky if the timing solution for the pulsar has not been developed yet. Timing is discussed in another post here.","@type":"BlogPosting","url":"http://localhost:4000/tutorials/toas","headline":"Making TOAs","dateModified":"2018-03-22T00:00:00-04:00","datePublished":"2018-03-22T00:00:00-04:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/tutorials/toas"},"@context":"http://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
 
@@ -72,12 +72,12 @@
     
     <!-- Logo and title -->
     <div class="branding">
-        <a href="/psr-obs/">
-            <img class="avatar" src="/psr-obs/assets/img/logo.svg" alt=""/>
+        <a href="/">
+            <img class="avatar" src="/assets/img/logo.svg" alt=""/>
         </a>
 
         <h1 class="site-title">
-            <a href="/psr-obs/">UVa Pulsar Observers</a>
+            <a href="/">UVa Pulsar Observers</a>
         </h1>
     </div>
     
@@ -106,11 +106,11 @@
 
                             <div class="dropdown-content">
                             
-                                    <a href="/psr-obs/timing">Timing Group</a>
+                                    <a href="/timing">Timing Group</a>
                             
-                                    <a href="/psr-obs/lectures">Lectures</a>
+                                    <a href="/lectures">Lectures</a>
                             
-                                    <a href="/psr-obs/tutorials">Tutorials</a>
+                                    <a href="/tutorials">Tutorials</a>
                             
                             </div>
                     </div>
@@ -119,19 +119,19 @@
         
                 
                         <li>
-                                <a href="/psr-obs/pulsar">Pulsars</a>
+                                <a href="/pulsar">Pulsars</a>
                         </li>
                 
         
                 
                         <li>
-                                <a href="/psr-obs/LWA">LWA</a>
+                                <a href="/LWA">LWA</a>
                         </li>
                 
         
                 
                         <li>
-                                <a href="/psr-obs/about">About</a>
+                                <a href="/about">About</a>
                         </li>
                 
         
@@ -159,7 +159,7 @@
 
     
         <li>
-            <a class="clear" href="/psr-obs/">
+            <a class="clear" href="/">
                 Welcome
             </a>
         </li>
@@ -205,7 +205,7 @@
 
     
         <li>
-            <a class="clear" href="/psr-obs/timing.html">
+            <a class="clear" href="/timing.html">
                 UVa Timing
             </a>
         </li>
@@ -226,7 +226,7 @@
 
     
         <li>
-            <a class="clear" href="/psr-obs/pulsar">
+            <a class="clear" href="/pulsar">
                 Pulsars
             </a>
         </li>
@@ -244,7 +244,7 @@
 
     
         <li>
-            <a class="clear" href="/psr-obs/LWA">
+            <a class="clear" href="/LWA">
                 LWA
             </a>
         </li>
@@ -262,7 +262,7 @@
 
     
         <li>
-            <a class="clear" href="/psr-obs/about">
+            <a class="clear" href="/about">
                 About
             </a>
         </li>
@@ -298,7 +298,7 @@
 
     <div class="content">
       <article >
-  <header id="main" style="background-image: url('/psr-obs/')">
+  <header id="main" style="background-image: url('/')">
     <h1 id="Making+TOAs" class="title">
         Making TOAs
     </h1>
@@ -376,7 +376,7 @@
     
 <footer class="site-footer">
     <p class="text">&copy; Steven Stetzler
- | <a href="/psr-obs/credits">Credits</a></p>
+ | <a href="/credits">Credits</a></p>
             <div class="footer-icons">
                 <ul>
                 <!-- Social icons from Font Awesome, if enabled -->
@@ -384,7 +384,7 @@
 
 
 <li>
-<a href="mailto:steven.stetzler@gmail.com" title="Email">
+<a href="mailto:pulsarobservers@gmail.com" title="Email">
         <span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
@@ -405,7 +405,7 @@
 
 
 <li>
-	<a href="https://github.com/stevenstetzler" title="Follow on GitHub">
+	<a href="https://github.com/pulsar-observers" title="Follow on GitHub">
 		<span class="fa-stack fa-lg">
             <i class="fa fa-circle fa-stack-2x"></i>
             <i class="fa fa-github fa-stack-1x fa-inverse"></i>
