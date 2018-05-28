@@ -1,0 +1,424 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- JQuery (used for bootstrap and jekyll search) -->
+    <script src="/psr-obs/assets/js/jquery-3.2.1.min.js" ></script>
+    
+    <!-- Main JS (navbar.js and katex_init.js)-->
+    <script defer=true src="/psr-obs/assets/js/main.min.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/psr-obs/assets/css/main.css">
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="/psr-obs/assets/img/logo.png" type="image/x-icon">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="http://localhost:4000/psr-obs/search/">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="UVa Pulsar Observers" href="http://localhost:4000//psr-obs//feed.xml"/>
+
+    <!-- Font Awesome -->
+    <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="/psr-obs/assets/css/font-awesome.min.css">
+
+    <!-- Google Fonts -->
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css"> 
+    
+
+    <!-- KaTeX 0.8.3 -->
+    
+    <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="/psr-obs/assets/css/katex.min.css">
+    <script src="/psr-obs/assets/js/katex.min.js">
+    </script>
+    
+
+    <!-- Google Analytics -->
+    
+    
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.4.0 -->
+<meta name="generator" content="Jekyll v3.7.0" />
+<meta property="og:title" content="Search" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/psr-obs/search/" />
+<meta property="og:url" content="http://localhost:4000/psr-obs/search/" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/psr-obs/search/","headline":"Search","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Manual seo tags -->
+    <title>Search</title>
+    <!--
+    <title>Search | UVa Pulsar Observers</title>
+    <meta name="description" content="The UVA Pulsar Observation group is led by UVA undergraduate students with the purpose of oberving and timing left-behind pulsars.">
+    -->
+</head>
+
+  <body>
+    <header class="site-header">
+    
+    <!-- Logo and title -->
+    <div class="branding">
+        <a href="/psr-obs/">
+            <img class="avatar" src="/psr-obs/assets/img/logo.svg" alt=""/>
+        </a>
+
+        <h1 class="site-title">
+            <a href="/psr-obs/">UVa Pulsar Observers</a>
+        </h1>
+    </div>
+    
+    <!-- Toggle menu -->
+    <nav class="clear">
+    <a id="pull" class="toggle" href="#">
+    <i class="fa fa-bars fa-lg"></i>
+    </a>
+    
+    <!-- Menu -->
+    <!-- Uses new method of specified ordering in _data/navigation.yml -->
+        
+        <ul>
+        
+                
+                    <li>
+                    <div class="dropdown">
+                            
+
+                            <a href="#"> UVa</a>
+                                    <button class="dropbtn">
+                                    </button>
+                            </a>
+
+                            
+
+                            <div class="dropdown-content">
+                            
+                                    <a href="/psr-obs/timing">Timing Group</a>
+                            
+                                    <a href="/psr-obs/lectures">Lectures</a>
+                            
+                                    <a href="/psr-obs/tutorials">Tutorials</a>
+                            
+                            </div>
+                    </div>
+                    </li>
+                
+        
+                
+                        <li>
+                                <a href="/psr-obs/pulsar">Pulsars</a>
+                        </li>
+                
+        
+                
+                        <li>
+                                <a href="/psr-obs/LWA">LWA</a>
+                        </li>
+                
+        
+                
+                        <li>
+                                <a href="/psr-obs/about">About</a>
+                        </li>
+                
+        
+        </ul>
+
+    <!-- Old method using site's pages with specified ordering
+    <ul>
+    
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+    
+
+    
+        <li>
+            <a class="clear" href="/psr-obs/">
+                Welcome
+            </a>
+        </li>
+    
+
+    
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+    
+        <li>
+            <a class="clear" href="/psr-obs/timing.html">
+                UVa Timing
+            </a>
+        </li>
+    
+        
+
+    
+
+    
+        
+
+
+        
+
+        
+
+    
+
+    
+        <li>
+            <a class="clear" href="/psr-obs/pulsar">
+                Pulsars
+            </a>
+        </li>
+    
+
+    
+        
+
+
+        
+
+        
+
+    
+
+    
+        <li>
+            <a class="clear" href="/psr-obs/LWA">
+                LWA
+            </a>
+        </li>
+    
+
+    
+        
+
+
+        
+
+        
+
+    
+
+    
+        <li>
+            <a class="clear" href="/psr-obs/about">
+                About
+            </a>
+        </li>
+    
+
+    
+        
+
+
+         
+    <li>
+      <div class="dropdown">
+        <a href="timing.html">
+        <button class="dropbtn">Dropdown 
+        </button>
+        </a>
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div> 
+    </li>
+
+        
+        
+        
+        
+    </ul>
+        -->
+    </nav>
+</header>
+
+    <div class="content">
+      <article class="feature-image">
+  <header id="main" style="background-image: url('/psr-obs/assets/img/pexels/search-map.jpeg')">
+    <h1 id="Search" class="title">
+        Search
+    </h1>
+    
+    
+    <h2 class="subtitle">What are you looking for?</h2>
+    
+      
+  </header>
+  <section class="post-content"><!-- Html Elements for Search -->
+<input type="text" id="search-input" placeholder="Enter keywords..." class="search-bar">
+<br>
+<br>
+<ul id="results-container"></ul>
+
+<section>
+    <!-- Script pointing to jekyll-search.js -->
+    <script src="/psr-obs/assets/js/jekyll-search.min.js" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        SimpleJekyllSearch({
+            searchInput: document.getElementById('search-input'),
+            resultsContainer: document.getElementById('results-container'),
+            json: [
+                    
+                  ],
+            searchResultTemplate: '<div class="search-title"><a href="{url}"><h3> {title}</h3></a><div class="meta">{date} <div class="right"><i class="fa fa-tag"></i> {tags}</div></div><p>{category}</p></div><hr> ',
+            noResultsText: 'No results found',
+            limit: 10,
+            fuzzy: true,
+            exclude: []
+        })
+    </script>
+</section>
+</section>
+    
+    
+  <!-- Tag list for portfolio -->
+  
+  
+
+
+
+    
+</article>
+
+    </div>
+    
+<footer class="site-footer">
+    <p class="text">&copy; Steven Stetzler
+ | <a href="/psr-obs/credits">Credits</a></p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+
+
+<li>
+<a href="mailto:steven.stetzler@gmail.com" title="Email">
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/stevenstetzler" title="Follow on GitHub">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+
+
+
+  </body>
+</html>

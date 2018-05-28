@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    
+    <!-- JQuery (used for bootstrap and jekyll search) -->
+    <script src="/psr-obs/assets/js/jquery-3.2.1.min.js" ></script>
+    
+    <!-- Main JS (navbar.js and katex_init.js)-->
+    <script defer=true src="/psr-obs/assets/js/main.min.js"></script>
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="/psr-obs/assets/css/main.css">
+
+    <!--Favicon-->
+    <link rel="shortcut icon" href="/psr-obs/assets/img/logo.png" type="image/x-icon">
+
+    <!-- Canonical -->
+    <link rel="canonical" href="http://localhost:4000/psr-obs/lectures">
+
+    <!-- RSS -->
+    <link rel="alternate" type="application/atom+xml" title="UVa Pulsar Observers" href="http://localhost:4000//psr-obs//feed.xml"/>
+
+    <!-- Font Awesome -->
+    <!-- <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+    <link rel="stylesheet" type="text/css" href="/psr-obs/assets/css/font-awesome.min.css">
+
+    <!-- Google Fonts -->
+    
+    <link href="//fonts.googleapis.com/css?family=Source+Sans+Pro:400,700,700italic,400italic" rel="stylesheet" type="text/css"> 
+    
+
+    <!-- KaTeX 0.8.3 -->
+    
+    <!--<link rel="stylesheet" href="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.css">
+    <script src="//cdnjs.cloudflare.com/ajax/libs/KaTeX/0.8.3/katex.min.js"></script> -->
+    <link rel="stylesheet" type="text/css" href="/psr-obs/assets/css/katex.min.css">
+    <script src="/psr-obs/assets/js/katex.min.js">
+    </script>
+    
+
+    <!-- Google Analytics -->
+    
+    
+    <!-- seo tags -->
+    <!-- Begin Jekyll SEO tag v2.4.0 -->
+<meta name="generator" content="Jekyll v3.7.0" />
+<meta property="og:title" content="Lectures" />
+<meta property="og:locale" content="en_US" />
+<link rel="canonical" href="http://localhost:4000/psr-obs/lectures" />
+<meta property="og:url" content="http://localhost:4000/psr-obs/lectures" />
+<script type="application/ld+json">
+{"@type":"WebPage","url":"http://localhost:4000/psr-obs/lectures","headline":"Lectures","@context":"http://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+
+    <!-- Manual seo tags -->
+    <title>Lectures</title>
+    <!--
+    <title>Lectures | UVa Pulsar Observers</title>
+    <meta name="description" content="The UVA Pulsar Observation group is led by UVA undergraduate students with the purpose of oberving and timing left-behind pulsars.">
+    -->
+</head>
+
+  <body>
+    <header class="site-header">
+    
+    <!-- Logo and title -->
+    <div class="branding">
+        <a href="/psr-obs/">
+            <img class="avatar" src="/psr-obs/assets/img/logo.svg" alt=""/>
+        </a>
+
+        <h1 class="site-title">
+            <a href="/psr-obs/">UVa Pulsar Observers</a>
+        </h1>
+    </div>
+    
+    <!-- Toggle menu -->
+    <nav class="clear">
+    <a id="pull" class="toggle" href="#">
+    <i class="fa fa-bars fa-lg"></i>
+    </a>
+    
+    <!-- Menu -->
+    <!-- Uses new method of specified ordering in _data/navigation.yml -->
+        
+        <ul>
+        
+                
+                    <li>
+                    <div class="dropdown">
+                            
+
+                            <a href="#"> UVa</a>
+                                    <button class="dropbtn">
+                                    </button>
+                            </a>
+
+                            
+
+                            <div class="dropdown-content">
+                            
+                                    <a href="/psr-obs/timing">Timing Group</a>
+                            
+                                    <a href="/psr-obs/lectures">Lectures</a>
+                            
+                                    <a href="/psr-obs/tutorials">Tutorials</a>
+                            
+                            </div>
+                    </div>
+                    </li>
+                
+        
+                
+                        <li>
+                                <a href="/psr-obs/pulsar">Pulsars</a>
+                        </li>
+                
+        
+                
+                        <li>
+                                <a href="/psr-obs/LWA">LWA</a>
+                        </li>
+                
+        
+                
+                        <li>
+                                <a href="/psr-obs/about">About</a>
+                        </li>
+                
+        
+        </ul>
+
+    <!-- Old method using site's pages with specified ordering
+    <ul>
+    
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+    
+
+    
+        <li>
+            <a class="clear" href="/psr-obs/">
+                Welcome
+            </a>
+        </li>
+    
+
+    
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+
+        
+
+        
+
+    
+        <li>
+            <a class="clear" href="/psr-obs/timing.html">
+                UVa Timing
+            </a>
+        </li>
+    
+        
+
+    
+
+    
+        
+
+
+        
+
+        
+
+    
+
+    
+        <li>
+            <a class="clear" href="/psr-obs/pulsar">
+                Pulsars
+            </a>
+        </li>
+    
+
+    
+        
+
+
+        
+
+        
+
+    
+
+    
+        <li>
+            <a class="clear" href="/psr-obs/LWA">
+                LWA
+            </a>
+        </li>
+    
+
+    
+        
+
+
+        
+
+        
+
+    
+
+    
+        <li>
+            <a class="clear" href="/psr-obs/about">
+                About
+            </a>
+        </li>
+    
+
+    
+        
+
+
+         
+    <li>
+      <div class="dropdown">
+        <a href="timing.html">
+        <button class="dropbtn">Dropdown 
+        </button>
+        </a>
+        <div class="dropdown-content">
+          <a href="#">Link 1</a>
+          <a href="#">Link 2</a>
+          <a href="#">Link 3</a>
+        </div>
+      </div> 
+    </li>
+
+        
+        
+        
+        
+    </ul>
+        -->
+    </nav>
+</header>
+
+    <div class="content">
+      <div class="posts">
+
+	
+
+	
+
+	
+
+	
+	<div class="post-teaser">
+	
+	<span>
+		<header>
+		<h1>
+			<a class="post-link" href="/psr-obs/lectures/single-pulse">
+				Single Pulse Analysis
+			</a>
+		</h1>
+		<p class="meta">
+			February 23, 2018
+		</p>
+		</header>
+		<div class="excerpt">
+			Lecture 10 - Single Pulse Analysis
+
+
+
+			<!--<a class="button" href="/psr-obs/lectures/single-pulse">
+			Continue reading
+			</a>-->
+		</div>
+	</span>
+	</div>
+	
+
+	
+	<div class="post-teaser">
+	
+	<span>
+		<header>
+		<h1>
+			<a class="post-link" href="/psr-obs/lectures/beyond-timing">
+				Beyond Pulsar Timing
+			</a>
+		</h1>
+		<p class="meta">
+			December 6, 2017
+		</p>
+		</header>
+		<div class="excerpt">
+			Lecture 9 - Beyond Pulsar Timing
+
+
+
+			<!--<a class="button" href="/psr-obs/lectures/beyond-timing">
+			Continue reading
+			</a>-->
+		</div>
+	</span>
+	</div>
+	
+
+	
+	<div class="post-teaser">
+	
+	<span>
+		<header>
+		<h1>
+			<a class="post-link" href="/psr-obs/lectures/timing-in-practice">
+				Pulsar Timing in Practice
+			</a>
+		</h1>
+		<p class="meta">
+			November 29, 2017
+		</p>
+		</header>
+		<div class="excerpt">
+			Lecture 8 - Pulsar Timing in Practice
+
+
+
+			<!--<a class="button" href="/psr-obs/lectures/timing-in-practice">
+			Continue reading
+			</a>-->
+		</div>
+	</span>
+	</div>
+	
+
+	
+	<div class="post-teaser">
+	
+	<span>
+		<header>
+		<h1>
+			<a class="post-link" href="/psr-obs/lectures/pulsar-timing">
+				Pulsar Timing
+			</a>
+		</h1>
+		<p class="meta">
+			November 8, 2017
+		</p>
+		</header>
+		<div class="excerpt">
+			Lecture 7 - Pulsar Timing (slides) Sorry no sound! :(
+
+
+
+			<!--<a class="button" href="/psr-obs/lectures/pulsar-timing">
+			Continue reading
+			</a>-->
+		</div>
+	</span>
+	</div>
+	
+
+	
+	<div class="post-teaser">
+	
+	<span>
+		<header>
+		<h1>
+			<a class="post-link" href="/psr-obs/lectures/review-material">
+				Review - From Observation to Folded Data
+			</a>
+		</h1>
+		<p class="meta">
+			November 4, 2017
+		</p>
+		</header>
+		<div class="excerpt">
+			Lecture 6 - Review: From Observation to Folded Data (slides)
+
+
+
+			<!--<a class="button" href="/psr-obs/lectures/review-material">
+			Continue reading
+			</a>-->
+		</div>
+	</span>
+	</div>
+	
+
+	
+	<div class="post-teaser">
+	
+	<span>
+		<header>
+		<h1>
+			<a class="post-link" href="/psr-obs/lectures/data-and-rfi">
+				Checking Data and RFI Mitigation
+			</a>
+		</h1>
+		<p class="meta">
+			November 1, 2017
+		</p>
+		</header>
+		<div class="excerpt">
+			Lecture 5 - Checking Data and RFI Mitigation
+
+
+
+			<!--<a class="button" href="/psr-obs/lectures/data-and-rfi">
+			Continue reading
+			</a>-->
+		</div>
+	</span>
+	</div>
+	
+
+	
+	<div class="post-teaser">
+	
+	<span>
+		<header>
+		<h1>
+			<a class="post-link" href="/psr-obs/lectures/pulsar-data-products">
+				Working with Pulsar Data Products
+			</a>
+		</h1>
+		<p class="meta">
+			October 25, 2017
+		</p>
+		</header>
+		<div class="excerpt">
+			Lecture 4 - Working with Pulsar Data Products
+
+
+
+			<!--<a class="button" href="/psr-obs/lectures/pulsar-data-products">
+			Continue reading
+			</a>-->
+		</div>
+	</span>
+	</div>
+	
+
+	
+
+	
+	<div class="post-teaser">
+	
+	<span>
+		<header>
+		<h1>
+			<a class="post-link" href="/psr-obs/lectures/LWA-data-reduction">
+				LWA Pulsar Data Reduction
+			</a>
+		</h1>
+		<p class="meta">
+			October 18, 2017
+		</p>
+		</header>
+		<div class="excerpt">
+			Lecture 3 - LWA Pulsar Data Reduction
+
+
+Accompanying tutorial: LWA Pulsar Data Reduction
+
+			<!--<a class="button" href="/psr-obs/lectures/LWA-data-reduction">
+			Continue reading
+			</a>-->
+		</div>
+	</span>
+	</div>
+	
+
+	
+	<div class="post-teaser">
+	
+	<span>
+		<header>
+		<h1>
+			<a class="post-link" href="/psr-obs/lectures/intro-LWA">
+				Introduction to the LWA
+			</a>
+		</h1>
+		<p class="meta">
+			October 11, 2017
+		</p>
+		</header>
+		<div class="excerpt">
+			Lecture 2 - Introduction to the LWA (slides)
+
+
+
+			<!--<a class="button" href="/psr-obs/lectures/intro-LWA">
+			Continue reading
+			</a>-->
+		</div>
+	</span>
+	</div>
+	
+
+	
+
+	
+	<div class="post-teaser">
+	
+	<span>
+		<header>
+		<h1>
+			<a class="post-link" href="/psr-obs/lectures/intro-command-line">
+				Introduction to the Command Line
+			</a>
+		</h1>
+		<p class="meta">
+			October 7, 2017
+		</p>
+		</header>
+		<div class="excerpt">
+			Lecture 1 - Introduction to the Command Line
+
+
+Accompanying tutorial: Tutorial the Command Line
+
+			<!--<a class="button" href="/psr-obs/lectures/intro-command-line">
+			Continue reading
+			</a>-->
+		</div>
+	</span>
+	</div>
+	
+
+</div>
+
+
+
+    </div>
+    
+<footer class="site-footer">
+    <p class="text">&copy; Steven Stetzler
+ | <a href="/psr-obs/credits">Credits</a></p>
+            <div class="footer-icons">
+                <ul>
+                <!-- Social icons from Font Awesome, if enabled -->
+                
+
+
+<li>
+<a href="mailto:steven.stetzler@gmail.com" title="Email">
+        <span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-envelope fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<li>
+	<a href="https://github.com/stevenstetzler" title="Follow on GitHub">
+		<span class="fa-stack fa-lg">
+            <i class="fa fa-circle fa-stack-2x"></i>
+            <i class="fa fa-github fa-stack-1x fa-inverse"></i>
+        </span>
+	</a>
+</li>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                </ul>
+            </div>
+</footer>
+
+
+
+
+  </body>
+</html>

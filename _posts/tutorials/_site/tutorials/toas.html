@@ -1,0 +1,57 @@
+<p>A time of arrival (TOA) is the key component of a pulsar’s timing solution; it is the raw data point to which the timing solution model is fit. A time of arrival can be thought of as a “timestamp” indicating when the radiation from a pulsar arrived at the telescope with which we are observing. The time of arrival is not the true arrival time of any single pulse of a radiation from a pulsar, but rather it is a “timestamp” associated with the averaged data from a single observation at a single frequency. Even though we may observe a pulsar for tens or minutes or even 1 - 2 hours and at a wide range of frequencies, we average all of this data together in order to produce just a few TOAs for a single observation. For example, we may observe a pulsar for 1 hour over frequencies ranging from 33 MHz to 78 Mhz, but only produce 2 TOAs from this observation: 1 TOA for the first 30 minutes of the observation and 1 TOA for the second 30 minutes of the observation, both with an associated frequency which is the central frequency of our observation band (55.5 MHz). Of course, we can divy up our observation into smaller chuncks in time, producing more TOAs at different times for a single observation. We can also divy up our frequency band in a finer-grained manner, producing TOAs at several different frequencies for a single observation instead of just 1 characteristic frequency.</p>
+
+<h2 id="scrunching-data-with-pam">Scrunching Data with <code class="highlighter-rouge">pam</code></h2>
+
+<p>The process of averaging together data in time and frequency is known in our jargon as “scrunching” the data. We can scrunch in both the time domain and the frequency domain. Raw pulsar observation data stored in the standard psrchive <strong>INSERT LINK</strong> format (<code class="highlighter-rouge">.ar</code> files) can be scrunched using the pam command <strong>INSERT LINK</strong> from psrchive. <code class="highlighter-rouge">pam</code> is a general purpose tool for modifying <code class="highlighter-rouge">.ar</code> files. In our use, we will use it to simply scrunch data in the time and frequency domains using the following commands:
+<code class="highlighter-rouge">bash
+pam -e &lt;ext&gt; --nsubint=&lt;num_sub_integrations&gt; &lt;ar_file&gt;
+</code>
+and
+<code class="highlighter-rouge">bash
+pam -e &lt;ext&gt; --nsubchn=&lt;num_frequency_channels&gt; &lt;ar_file&gt;
+</code>
+When writing code, whenever we surround a word with brackets (<code class="highlighter-rouge">&lt;&gt;</code>), we mean that you have to replace what’s inside the brackets with the object described in the brackets. For example, here we would replace <code class="highlighter-rouge">&lt;ar_file&gt;</code> with <code class="highlighter-rouge">my_pulsar_data.ar</code>, which is just a standard <code class="highlighter-rouge">.ar</code> file. <code class="highlighter-rouge">&lt;num_sub_integrations&gt;</code> is replaced with the desired number of sub integrations that you want your data to be segmented into. For example, if our observation is an hour long and we use 2 for the number of sub integrations, at the end of the scrunch, our data will be averaged into two 30 minute sections. Similarly, using 4 would average the data into four 15 minute sections. <code class="highlighter-rouge">&lt;num_frequency_channels&gt;</code> is replaced with the number of frequency channels to segment the data into. Usually, our data from the telescope, once processed, is very finely grained, containing information about the pulsar at several hundred or several thousands of frequencies in our observing band. We can average this data together in the frequency domain, so that we have averaged data that is associated with only <code class="highlighter-rouge">&lt;num_frequency_channels&gt;</code> number of channels. For example, averaging down to 2 frequency channels on data that covers the frequency range of 20 MHz - 100 MHz would produce data that is associated with frequencies of 40 MHz and 80 MHz (these two frequencies are the center frequencies between 20 MHz - 60 MHz and 60 MHz - 100 MHz, where 60 MHz is the halfway point between 20 and 100). Finally, <code class="highlighter-rouge">&lt;ext&gt;</code> provides an extension to use to append to the data files when writing them back out into files. Usually, we want to differentiate the scrunched files from the raw <code class="highlighter-rouge">.ar</code> files, so we use the conventiion of putting how many sub integrations and how many frequency channels are in the scrunched data in the extension. For example, if we scrunched our data down to 2 sub integrations and 2 frequency channels we might use <code class="highlighter-rouge">&lt;ext&gt; = 2sub2chan</code> to indicate to us and others the properties of the scrunched data. But you can use whatever makes sense to you.</p>
+
+<p><code class="highlighter-rouge">pam</code> has the ability to operate on many <code class="highlighter-rouge">.ar</code> files at once, and you can provide it with all of the <code class="highlighter-rouge">.ar</code> files in your current directory using
+<code class="highlighter-rouge">bash
+pam -e &lt;ext&gt; --nsubint=&lt;num_sub_integrations&gt; --nsubchn=&lt;num_frequency_channels&gt; *.ar
+</code></p>
+
+<h2 id="what-scrunched-data-looks-like">What scrunched data looks like</h2>
+
+<p>The purpose of scrunching data is to average together low signal-to-noise ratio (SNR) pulse profiles together to produce one high SNR pulse profile. We can see this effect by using psrplot to examine the <code class="highlighter-rouge">.ar</code> files before the scrunching and after the scrunching. For convenience, we will use the <code class="highlighter-rouge">summary_plot</code> command to plot the <code class="highlighter-rouge">.ar</code> data.</p>
+
+<p>First, we will examine some data from the pulsar <strong>INSERT PULSAR</strong>. The raw ar files used can be found here: <strong>INSERT LINK</strong></p>
+
+<p><code class="highlighter-rouge">bash
+summary_plot &lt;ar_file&gt;.ar
+</code></p>
+
+<p><strong>INSERT PICTURES HERE</strong></p>
+
+<p>Next, we will scrunch the data using <code class="highlighter-rouge">pam</code>:
+<code class="highlighter-rouge">bash
+pam -e 2sub2chan --nsubint=2 --numchn=2 &lt;ar_file&gt;.ar
+</code></p>
+
+<p>Finally, we will observe this scrunched data using
+<code class="highlighter-rouge">bash
+summary_plot &lt;file&gt;.2sub2chan
+</code></p>
+
+<h2 id="making-toas">Making TOAs</h2>
+
+<p>Making a TOA involves matching a template (what we think the pulse profile looks like) to our pulse profile, which we saw in the section above. Template matching is a process by which a template is swept through a set of data (usually a time series) and the location where the template best matches the data is found. By sweeping a template over the pulse profile and then finding the point in time where the template best matches the data, we are making a high precision measurement of the time of arrival of the <em>averaged</em> pulsar signal for our observation. This template matching can be performed using the command <code class="highlighter-rouge">pat</code> <strong>INSERT LINK</strong> from the psrchive software. <code class="highlighter-rouge">pat</code> is used as follows
+<code class="highlighter-rouge">bash
+pat -f princeton -F -s &lt;template_location&gt; &gt; &lt;outfilename&gt;
+</code>
+The <code class="highlighter-rouge">-f princeton</code> tells <code class="highlighter-rouge">pat</code> to print out the TOAs using the princeton format. There are several formats available, but the princeton format is the simplest and most straightforward to use. The <code class="highlighter-rouge">-F</code> tells <code class="highlighter-rouge">pat</code> to also average the data in polarization as well. The <code class="highlighter-rouge">-s &lt;template_location&gt;</code> tells <code class="highlighter-rouge">pat</code> to look for a template at the location <code class="highlighter-rouge">&lt;template_location&gt;</code>. Finally the <code class="highlighter-rouge">&gt; &lt;outfilename&gt;</code> tells Bash to pipe the output of <code class="highlighter-rouge">pat</code> (the TOAs) into a file called <code class="highlighter-rouge">&lt;outfilename&gt;</code>. For example, using the scrunched data from above we can use the command
+<code class="highlighter-rouge">bash
+pat -f princeton -F -s PULSAR_TEMPLATE &gt; PULSAR_NAME.tim
+</code>
+to construct TOAs for this pulsar at the times and frequencies associated with the scrunched data. If we inspect the file <code class="highlighter-rouge">PULSAR_NAME.tim</code>, we will see that it’s just a bunch of text:
+<code class="highlighter-rouge">
+TEXT
+</code>
+Describe the output from the TOAs</p>
+

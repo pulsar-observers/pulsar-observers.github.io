@@ -1,0 +1,14 @@
+- title: UVa
+  sublinks:
+    - title: Timing Group
+      url: /timing
+    - title: Lectures
+      url: /lectures
+    - title: Tutorials
+      url: /tutorials
+- title: Pulsars
+  url: /pulsar
+- title: LWA
+  url: /LWA
+- title: About
+  url: /about
