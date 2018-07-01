@@ -2,6 +2,8 @@
   sublinks:
     - title: Timing Group
       url: /timing
+    - title: News
+      url: /news
     - title: Lectures
       url: /lectures
     - title: Tutorials
