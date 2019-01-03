@@ -9,7 +9,7 @@ Feel free to reach out to either of the current organizers with questions.
 
 **Contact**
 
-Steven Stetzler: [steven.stetzler@gmail.com](mailto:steven.stetzler@gmail.com)
+Nick Clifford: [ncc3ee@virginia.edu](mailto:ncc3ee@virginia.edu)
 
 Kevin Stovall: [kstovall@nrao.edu](mailto:kstovall@nrao.edu)
 
