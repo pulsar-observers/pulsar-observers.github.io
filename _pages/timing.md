@@ -11,10 +11,13 @@ Our group at the University of Virginia (UVa) is observing and timing a set 10 p
 
 Our group members are:
 
-**Leaders**
-- Nick Clifford
-- Robin Leichtnam
-- [Kevin Stovall](http://physics.unm.edu/pandaweb/people/person.php?personID=1231)
+**Officers**
+- President: Nick Clifford
+- Vice President: Robin Leichtnam
+- Secretaries: Shelby Laychak, Morgan Waddy
+- Treasurer: Levi Schultz
+- Technical Officer: Nick Anderson
+- Faculty Adviser: [Kevin Stovall](http://physics.unm.edu/pandaweb/people/person.php?personID=1231)
 
 **Members**
 - Nick Anderson
