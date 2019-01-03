@@ -1,0 +1,35 @@
+<div class="posts">
+	{% for post in site.posts %}
+	{% if post.type == include.type %}
+	{% unless post.hide %}
+	<div class="post-teaser" style="padding: 5% 0;">
+		{% if post.thumbnail %} 
+		<div class="post-img">
+			<img src="{{ site.baseurl }}/{{ post.thumbnail }}">
+		</div>
+		{% endif %}
+		<span>
+				<h1 class="post-header">
+					<a class="post-link" href="{{ post.url | prepend: site.baseurl }}">
+						{{ post.title }}
+					</a>
+				</h1>
+			{% if page.include_date %}
+			<p class="meta">
+				{{ post.date | date: "%B %-d, %Y" }}
+			</p>
+			{% endif %}
+			<div class="excerpt">
+				{{ post.content | strip_html | truncate: "250" }}
+				<p>
+					<a class="button" href="{{ post.url | prepend: site.baseurl }}">
+						{{ site.theme_settings.str_continue_reading }}
+					</a>
+				</p>
+			</div>
+		</span>
+	</div>
+	{% endunless %}
+	{% endif %}
+	{% endfor %}
+</div>

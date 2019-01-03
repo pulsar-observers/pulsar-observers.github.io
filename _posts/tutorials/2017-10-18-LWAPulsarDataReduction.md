@@ -2,7 +2,6 @@
 layout: page
 type: tutorial
 title: LWA Pulsar Data Reduction Tutorial
-hide: true
 permalink: tutorials/LWA-data-reduction
 ---
 

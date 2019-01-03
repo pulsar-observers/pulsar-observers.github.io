@@ -2,7 +2,6 @@
 layout: post
 type: lecture
 title: Single Pulse Analysis
-hide: true
 panopto_id: 49685f17-13e0-45b0-b270-a890014cfe90
 permalink: lectures/single-pulse
 ---

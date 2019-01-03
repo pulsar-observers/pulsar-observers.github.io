@@ -2,7 +2,6 @@
 layout: post
 type: lecture
 title: Pulsar Timing in Practice
-hide: true
 panopto_id: 0565d8a2-c77d-49fe-b4e0-5cea78bac5fd
 permalink: lectures/timing-in-practice
 ---

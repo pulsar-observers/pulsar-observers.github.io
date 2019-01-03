@@ -53,6 +53,7 @@ header {
 
 /* --- Feature image --- */
 
+
 .feature-image {
     padding: 0%;
     .post-link {
@@ -74,6 +75,13 @@ header {
     footer {
         @extend %padding-regular;
         padding-top: 0;
+    }
+}
+
+.post-header {
+    margin: 0;
+    .post-link {
+        color: #383838;
     }
 }
 

@@ -17,7 +17,7 @@ theme_settings:
      UVA Pulsar Observation Group
   header_text_feature_image: assets/img/pexels/triangular.jpeg
   footer_text: >
-      &copy; Steven Stetzler
+      &copy; Pulsar Observers
 
   # Icons
   rss: false
@@ -77,9 +77,16 @@ paginate_path: "blog/page:num"
 
 # PORTFOLIO
 collections:
-  portfolio:
+  pages:
     output: true
-    permalink: /:collection/:name
+    permalink: /:path/
+  
+defaults:
+  - scope:
+      path: ""
+      type: "posts"
+    values:
+      hide: false
 
 # BUILD SETTINGS
 markdown: kramdown
