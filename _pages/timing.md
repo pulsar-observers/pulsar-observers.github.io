@@ -35,16 +35,16 @@ Our group members are:
 
 The list of pulsars and who is observing them is below:
 
-- J0611+30: Shelby Laychak, Christie Xin, Cris Olphant
-- J1929+00: Hannah Umansky, Tryson Raecke, Abdullah Mahmood, Seth Morris
-- J2227+30: Robin Leichtnam, Zach Khan, Dave Gutierrez
-- B1504-43: Nick Anderson, Wyatt Ochs, Meredith Flabiano, Jamie Staeben
-- B0950+08: Carrick Hawes, Alexis Warren, Ian Wnorowski, Olivia Goodrich
-- B2016+28: Brain Tran, Andrew Toler, Emiko Gardiner, Haoyu Li
-- B1133+16: Morgan Waddy, Christian Benedict, Katie Korngiebel, Lucia Tian
-- B0655+64: Ian Walk, Rikia Freeman, Kyle Fielman, Mohit Srivastav
-- B0820+02: Levi Schult, AnnMarie Kelly, Noah Brenny, Gabriel Norris
-- B0823+26: Nick Clifford, Henry Blalock, Josef Zimmerman, Kierstan Bond
+- J0611+30: Shelby Laychak, Christie Xin
+- J1929+00: Hannah Umansky, Abdullah Mahmood
+- J2227+30: Robin Leichtnam
+- B1504-43: Nick Anderson, Wyatt Ochs, Meredith Flabiano
+- B0950+08: Alexis Warren, Ian Wnorowski, Olivia Goodrich
+- B2016+28:
+- B1133+16: Morgan Waddy
+- B0655+64: Kyle Fielman
+- B0820+02: Levi Schult, Gabriel Norris
+- B0823+26: Nick Clifford, Henry Blalock
 
 We also keep an [archived list of past group members]({{ site.url }}{{ site.baseurl }}/past-members/).
 
