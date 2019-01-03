@@ -12,7 +12,7 @@ Our group at the University of Virginia (UVa) is observing and timing a set 10 p
 Our group members are:
 
 **Leaders**
-- [Steven Stetzler](http://stevenstetzler.com)
+- Nick Clifford
 - [Kevin Stovall](http://physics.unm.edu/pandaweb/people/person.php?personID=1231)
 
 **Members**
