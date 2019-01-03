@@ -32,7 +32,6 @@ Our group members are:
 - Shelby Laychak
 - Yara Yousef
 
-
 The list of pulsars and who is observing them is below:
 
 - J0611+30: Megan Kenny, Yara Yousef, Raymundo Mora
@@ -45,6 +44,8 @@ The list of pulsars and who is observing them is below:
 - B0655+64: Levi Schult, Ian Walk
 - B0820+02: Steven Stetzler, Jon Selby
 - B0823+26: 
+
+We also keep an [archived list of past group members]({{ site.url }}{{ site.baseurl }}/past-members/).
 
 Observational data for each of these pulsars is stored on the [LWA Pulsar Archive](https://lda10g.alliance.unm.edu/PulsarArchive/).
 
