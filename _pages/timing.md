@@ -13,37 +13,38 @@ Our group members are:
 
 **Leaders**
 - Nick Clifford
+- Robin Leichtnam
 - [Kevin Stovall](http://physics.unm.edu/pandaweb/people/person.php?personID=1231)
 
 **Members**
-- Cole Latvis
-- Demetri Workman
-- Dirk Pitts
-- Ian Walk
-- Jon Selby
+- Nick Anderson
 - Levi Schult
-- Liam Walters
-- Megan Kenny
-- Morgan Waddy
-- Nick Clifford
-- Raymundo Mora
-- Robin Leichtnam
-- Ryan Taylor
 - Shelby Laychak
-- Yara Yousef
+- Morgan Waddy
+- Wyatt Ochs
+- Henry Blalock
+- Abdullah Mahmood
+- Alexis Warren
+- Hannah Umansky
+- Meredith Flabiano
+- Gabriel Norris
+- Christie Xin
+- Kyle Fielman
+- Olivia Goodrich
+- Ian Wnorowski
 
 The list of pulsars and who is observing them is below:
 
-- J0611+30: Megan Kenny, Yara Yousef, Raymundo Mora
-- J1929+00: Shelby Laychak
-- J2227+30: Liam Walters, Robin Leichtnam, Nick Clifford
-- B1504-43: 
-- B0950+08: Cole Latvis
-- B2016+28: Ryan Taylor, Dirk Pitts
-- B1133+16: Demetri Workman, Morgan Waddy
-- B0655+64: Levi Schult, Ian Walk
-- B0820+02: Steven Stetzler, Jon Selby
-- B0823+26: 
+- J0611+30: Shelby Laychak, Christie Xin, Cris Olphant
+- J1929+00: Hannah Umansky, Tryson Raecke, Abdullah Mahmood, Seth Morris
+- J2227+30: Robin Leichtnam, Zach Khan, Dave Gutierrez
+- B1504-43: Nick Anderson, Wyatt Ochs, Meredith Flabiano, Jamie Staeben
+- B0950+08: Carrick Hawes, Alexis Warren, Ian Wnorowski, Olivia Goodrich
+- B2016+28: Brain Tran, Andrew Toler, Emiko Gardiner, Haoyu Li
+- B1133+16: Morgan Waddy, Christian Benedict, Katie Korngiebel, Lucia Tian
+- B0655+64: Ian Walk, Rikia Freeman, Kyle Fielman, Mohit Srivastav
+- B0820+02: Levi Schult, AnnMarie Kelly, Noah Brenny, Gabriel Norris
+- B0823+26: Nick Clifford, Henry Blalock, Josef Zimmerman, Kierstan Bond
 
 We also keep an [archived list of past group members]({{ site.url }}{{ site.baseurl }}/past-members/).
 
