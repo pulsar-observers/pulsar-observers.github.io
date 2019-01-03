@@ -75,12 +75,13 @@ theme_settings:
 paginate: 5
 paginate_path: "blog/page:num"
 
-# PORTFOLIO
+# Set up site to use _pages folder
 collections:
   pages:
     output: true
     permalink: /:path/
   
+# Set default variable values for all posts
 defaults:
   - scope:
       path: ""
@@ -95,6 +96,6 @@ sass:
   sass_dir: _sass
   style: :compressed
 plugins: [jekyll-paginate, jekyll-seo-tag]
-theme: type-on-strap # If using the theme as a jekyll theme gem
+# theme: type-on-strap # If using the theme as a jekyll theme gem
 exclude: ["Gemfile", "Gemfile.lock", "type-on-strap.gemspec", "*.gem", "LICENSE", "README.md", "screenshot.png"]
 
