@@ -26,7 +26,7 @@ A typical LWA pulsar observation results in about 130 files that are useful for 
 A station of the LWA consists of ~256 dipole antennas each with two polarizations for a total of 512 signals. These signals go into an analog receiver (ARX or ASP) and then into a digital processor (DP) which then sends the data into "Data Recorders" where the signal is written to a set of disks. If there is a slow down in DP or when writing the disks, there can be a break in the data. In order to know whether or not such a break has occurred, the data are recorded in pieces that we call "frames". Each frame has a time tag recorded with it to let us know what time the data corresponds to. If there is a break in the data, we can tell from these time tags and we call these "timetag errors". So, before getting into the rest of the data analysis, it is generally a good idea to check for these timetag errors at the beginning. This can be done using the command:
 
 ```sh
-$ /home/jdowell/fastDRXCheck.py FILENAME
+$ /usr/local/extensions/Commissioning//DRX/fastDRXCheck.py FILENAME
 ```
 
 It would be useful to look at a case for a good file and for a bad one so that you know what you are looking for. Okay, so first a good file:
