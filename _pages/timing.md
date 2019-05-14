@@ -1,13 +1,13 @@
 ---
 layout: page
-title: UVa Timing Group
-shortname: UVa Timing
+title: Pulsar Observing Group @UVA
+shortname: Pulsars @UVA
 feature-img: 'assets/img/rotunda.jpg'
 permalink: timing.html
 order: 1
 ---
 
-Our group at the University of Virginia (UVa) is observing and timing a set 10 pulsars using station 1 of the Long Wavelength Array. Each pulsar of interest has either not been timed before or has an extremely old timing solution published for it. 
+Our group at the University of Virginia (UVA) is observing and timing a set 10 pulsars using station 1 of the Long Wavelength Array. Each pulsar of interest has either not been timed before or has an extremely old timing solution published for it. 
 
 Our group members are:
 
