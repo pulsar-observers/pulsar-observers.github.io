@@ -7,11 +7,34 @@ order: 1
 
 This is an archived list of members of the pulsar observing group.
 
+# 2018 - 2019
+
+**Leaders**
+- Nick Clifford
+- Robin Leichtnam
+
+**Members**
+
+- Nick Anderson
+- Levi Schult
+- Shelby Laychak
+- Morgan Waddy
+- Wyatt Ochs
+- Henry Blalock
+- Abdullah Mahmood
+- Alexis Warren
+- Hannah Umansky
+- Meredith Flabiano
+- Gabriel Norris
+- Christie Xin
+- Kyle Fielman
+- Olivia Goodrich
+- Ian Wnorowski
+
 # 2017 - 2018
 
 **Leaders**
 - [Steven Stetzler](http://stevenstetzler.com)
-- [Kevin Stovall](http://physics.unm.edu/pandaweb/people/person.php?personID=1231)
 
 **Members**
 - Cole Latvis
