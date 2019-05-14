@@ -6,15 +6,15 @@ destination: "_site"
 # THEME-SPECIFIC CONFIGURATION
 theme_settings:
   # Meta
-  title: UVa Pulsar Observers
+  title: Pulsar Observing Group at UVA
   avatar: assets/img/logo.svg
   favicon: assets/img/logo.png
   gravatar: # Email MD5 hash
-  description: "The UVA Pulsar Observation group is led by UVA undergraduate students with the purpose of oberving and timing left-behind pulsars." # used by search engines
+  description: "The Pulsar Observing Group at UVA is led by UVA undergraduate students with the purpose of oberving and timing left-behind pulsars." # used by search engines
 
   # Header and footer text
   header_text: > #two or three lines to describe your site
-     UVA Pulsar Observation Group
+     Pulsar Observing Group at UVA
   header_text_feature_image: assets/img/pexels/triangular.jpeg
   footer_text: >
       &copy; Pulsar Observers
