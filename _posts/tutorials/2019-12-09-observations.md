@@ -47,20 +47,28 @@ Title: <pulsar name>
 	
 Comments: none (leave blank)
 ##### Session Information
-ID Number: 190_<internal count 1,2,3,..>		
+ID Number: 190_<internal count 1,2,3,..>
+
 Title: <pulsar name>
+	
 Comments: none (leave blank)
 
 Session Type - select BEAM FORMING
+
 Data Return Method - select COPY TO UCF
+
 UCF Username: uvastudent
 
 And then click **Ok**
 
 Go to **Observations** > **Add** > **DRX-RA/DEC** and fill in across the row:
+
 Name: <pulsar name>
+	
 Target: <pulsar name>
+	
 Comments: none
+
 Start: Set the duration to 24h with ``24:00:00``, then check **Observations** > **Session At A Glance**
 
 Find the peak of the pulsar using your cursor, then close the window and set the time of the peak to your start time. As for the day, pick a date about 3 days in the future. Observations must be submitted between 2 and 30 days before the scheduled time, so choose a few days in the future if you will be submitting your observations the same day as creating this file. After setting the start time, set the duration to 1 hour with ``01:00:00``. Reopen **Session At A Glance**, and the sinusoid should be replaced with an approximately horizontal line. Make slight alterations to the start time if the line has a significant slope. 
