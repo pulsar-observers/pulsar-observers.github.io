@@ -76,7 +76,7 @@ Find the peak of the pulsar using your cursor, then close the window and set the
 
 If you know your pulsar is exceptionally bright, the duration can be shortened to 30 minutes, ``00:30:00``. Likewise, if your pulsar is exceptionally dim, set the duration to 2 hours, ``02:00:00``. 	
 
-RA: Retrieve the right ascension from the [Australia Telescope National Facility website](https://www.atnf.csiro.au/people/pulsar/psrcat/) (ATNF Pulsar Catalog). Scroll down to "Pulsar names" and enter your pulsar name, and click **Get Ephemeris.** You may think you are getting results for another pulsar, but the catalog simply uses synonyms for the pulsar names given in different epochs. For example, searching for PSR B0655+64 renders results for PSR J0700+6418, but these are the same object. Fill in with the value for "RAJ," where the "J" indicated the J2000 epoch. 
+RA: Retrieve the right ascension from the [Australia Telescope National Facility website](https://www.atnf.csiro.au/people/pulsar/psrcat/) (ATNF Pulsar Catalog). Scroll down to "Pulsar names" and enter your pulsar name, and click **Get Ephemeris.** You may think you are getting results for another pulsar, but the catalog simply uses synonyms for the pulsar names given in different epochs. For example, searching for PSR B0655+64 renders results for PSR J0700+6418, but these are the same object. Fill in with the value for **RAJ**, where the **J** indicated the J2000 epoch. 
 	
 DEC: Likewise, retrieve the **DECJ** value from ATNF, making sure to add the **+** or **-** sign. 
 
@@ -160,7 +160,7 @@ Click **Validate**. You should get green check marks on the next page!
 
 After your observations, the data will be in 
 ```sh
-	uvastudent@lwaucf[#]:/data/network/recent_data/uvastudent/<pulsarname>/<MJD of observation>
+uvastudent@lwaucf[#]:/data/network/recent_data/uvastudent/<pulsarname>/<MJD of observation>
 ```
 
 Note: you will need to ``cd ../..`` after logging into the ``ucf``.
