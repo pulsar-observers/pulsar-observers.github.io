@@ -43,13 +43,13 @@ Last Name: Stetzler
 ##### Project Information 
 ID Code: LS012
 
-Title: <pulsar name>
+Title:<pulsar name>
 	
 Comments: none (leave blank)
 ##### Session Information
 ID Number: 190_<internal count 1,2,3,..>
 
-Title: <pulsar name>
+Title:<pulsar name>
 	
 Comments: none (leave blank)
 
@@ -63,9 +63,9 @@ And then click **Ok**
 
 Go to **Observations** > **Add** > **DRX-RA/DEC** and fill in across the row:
 
-Name: <pulsar name>
+Name:<pulsar name>
 	
-Target: <pulsar name>
+Target:<pulsar name>
 	
 Comments: none
 
