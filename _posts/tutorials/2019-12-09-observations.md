@@ -119,7 +119,7 @@ uvastudent@lwalab:~$
 To transfer the files, we will use ``scp``, the secure copy command. To use ``scp``, input ``scp <original location of file(s)> <new location of file(s)>``:
 
 ```sh
-$ scp uvastudent@lwaucf<#>:/home/uvastudent/uva_students/<your computing ID>/Observations/<date>_<your name>_<pulsar name>_* /home/uvastudent/observation_files/Fall2019
+$ scp uvastudent@lwaucf[#]:/home/uvastudent/uva_students/<your computing ID>/Observations/<date>_<your name>_<pulsar name>_* /home/uvastudent/observation_files/Fall2019
 ```
 
 Hit return/enter, and you will be prompted for the password to the ``ucf``. Enter the password to allow the ``scp`` to go through. 
@@ -164,15 +164,3 @@ uvastudent@lwaucf[#]:/data/network/recent_data/uvastudent/<pulsarname>/<MJD of o
 ```
 
 Note: you will need to ``cd ../..`` after logging into the ``ucf``.
-
-
-
-
-
-
-
-
-
-
-
-
