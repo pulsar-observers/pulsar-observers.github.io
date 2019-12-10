@@ -36,11 +36,15 @@ Go to **File** > **New** and fill in the following information:
 
 ##### Observer Information
 ID Number: 55
+
 First Name: Steven
+
 Last Name: Stetzler
 ##### Project Information 
 ID Code: LS012
+
 Title: <pulsar name>
+	
 Comments: none (leave blank)
 ##### Session Information
 ID Number: 190_<internal count 1,2,3,..>		
