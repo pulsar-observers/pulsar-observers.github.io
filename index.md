@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Welcome from AAS 235!
+title: Welcome!
 feature-img: 'assets/img/orion.jpg'
 ---
 
