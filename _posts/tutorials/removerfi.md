@@ -67,6 +67,9 @@ This command will bring up two PGPLOT windows, shown below:
 
 The window with three graphs displays: 1) the pulse profile, 2) frequency vs. pulse phase, 3) time vs. pulse phase. As we eliminate RFI, the pulse profile should become more defined. 
 
+![pgplots](https://pulsar-observers.github.com/assets/img/pgplot1.png)
+
+
 The other window with a single plot displays the data as a visual array of the data, organized by frequency and sub-integration index. We will be working with this plot to visually eliminate the RFI in our data. Bright spots in the data represent RFI, which we want to eliminate. Each time a pixel of RFI is eliminated, the plot will recalibrate its display values. 
 
 Sometimes, RFI is so strong that the plot looks empty save for a few rectangles. Once these are elimnated, the rest of the data will become visible. 
@@ -74,11 +77,17 @@ Sometimes, RFI is so strong that the plot looks empty save for a few rectangles.
 Clicking into the single plot, we will use an array of commands to "zap" the RFI. 
 
 r - "reset" - rescales the zoom to display the whole plot, but will not reset the plot to the original state
+
 t - "time" - changes the pointer to a vertical line
+
 f - "frequency" - changes the pointer to a horizontal line
+
 b - "both" - changes the pointer to crosshairs (default)
+
 u - "undo" - will undo the last "zap" in case the wrong pixel was selected
+
 s - "save" - will save the file and all your progress
+
 q - "quit" - allows the user to safely exit the program 
 
 To mark a pixel, row, column, or rectangle, right click the selection, and type 'r' to eliminate the RFI. To zoom into a section, left click to establish the left bound, then 
