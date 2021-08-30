@@ -7,6 +7,31 @@ order: 1
 
 This is an archived list of members of the pulsar observing group.
 
+# 2021 - 2022
+
+**Leaders**
+- Jee-Ho Kim
+- Jason Boynewicz
+- Louis Seyfritz
+- Zach Khan
+
+# 2020 - 2021
+
+**Leaders**
+- Levi Schult
+- Morgan Waddy
+
+**Members**
+- Jee-Ho Kim
+- Jason Boynewicz
+- Louis Seyfritz
+- Zach Khan
+- Olivia Goodrich
+
+# 2019 - 2020
+
+**Unknown**
+
 # 2018 - 2019
 
 **Leaders**

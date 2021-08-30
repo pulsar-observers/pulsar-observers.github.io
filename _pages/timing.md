@@ -12,42 +12,21 @@ Our group at the University of Virginia (UVA) is observing and timing a set 10 p
 Our group members are:
 
 **Officers**
-- President: Hannah Umansky
-- Vice President: Levi Schult
-- Secretaries: Shelby Laychak
-- Treasurer: Levi Schult
-- Technical Officer: Morgan Waddy
-- Faculty Adviser: [Kevin Stovall](http://physics.unm.edu/pandaweb/people/person.php?personID=1231)
+- President: Jee-Ho Kim
+- Vice President: Jason Boynewicz
+- Treasurer: Louis Seyfritz
+- CTO: Zach Khan
 
 **Members**
-- Nick Anderson
-- Levi Schult
-- Shelby Laychak
-- Morgan Waddy
-- Wyatt Ochs
-- Henry Blalock
-- Abdullah Mahmood
-- Alexis Warren
-- Hannah Umansky
-- Meredith Flabiano
-- Gabriel Norris
-- Christie Xin
-- Kyle Fielman
-- Olivia Goodrich
-- Ian Wnorowski
+- Coming soon to a pulsar near you!
 
 The list of pulsars and who is observing them is below:
 
-- J0611+30: Shelby Laychak, Christie Xin
-- J1929+00: Hannah Umansky, Abdullah Mahmood
-- J2227+30: Robin Leichtnam
-- B1504-43: Nick Anderson, Wyatt Ochs, Meredith Flabiano
-- B0950+08: Alexis Warren, Ian Wnorowski, Olivia Goodrich
-- B2016+28:
-- B1133+16: Morgan Waddy
-- B0655+64: Kyle Fielman
-- B0820+02: Levi Schult, Gabriel Norris
-- B0823+26: Nick Clifford, Henry Blalock
+- J0611+30: Zach Khan
+- J1929+00: Louis Seyfritz
+- J2227+30: Jee-Ho Kim
+- B0655+64: Jason Boynewicz
+
 
 We also keep an [archived list of past group members]({{ site.url }}{{ site.baseurl }}/past-members/).
 
